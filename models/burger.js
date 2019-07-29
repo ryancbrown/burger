@@ -1,14 +1,18 @@
 // Load ORM
-var orm = require('../config/orm.js')
+var orm = require('../config/orm.js');
 
 var burger = {
     selectAll: function(callback) { 
         orm.selectAll(function(res){
             callback(res)
-        })
+        });
     },
-    //insertOne: orm.insertOne(burgerName, enjoyed),
-    //updateOne: orm.updateOne(id, burgerName, enjoyed)
+    //insertOne: orm.insertOne(id, enjoyed),
+    updateOne: function(id, enjoyed, callback) { 
+        orm.updateOne(id, enjoyed, function(res){
+            callback(res)
+        });
+    }
 }
 
-module.exports = burger
+module.exports = burger;

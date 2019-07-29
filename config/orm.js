@@ -1,13 +1,13 @@
 // Connect to Database
-var connection = require('./connection.js')
+var connection = require('./connection.js');
 
 var orm = {
     selectAll: function(callback){ 
-        var q    = 'select id, burger_name '
-            q   += 'from burgers'
+        var q    = 'select id, burger_name, devoured ';
+            q   += 'from burgers';
         connection.query(q, function(err, res){ 
             if (err) throw err;
-            callback(res) 
+            callback(res);
         });
     },
     insertOne: function(burgerName, enjoyed){ 
@@ -16,13 +16,14 @@ var orm = {
             if (err) throw err; 
         });
     },
-    updateOne: function(id, burgerName, enjoyed){
+    updateOne: function(id, enjoyed, callback){
         var q    = 'update burgers set ? '
-            q   += 'where id = ' + id
-        connection.query(q, {burger_name : burgerName, devoured : enjoyed}, function(err, res){ 
+            q   += 'where id = \'' + id + '\''
+        connection.query(q, {devoured : enjoyed}, function(err, res){ 
             if (err) throw err; 
+            callback(res)
         });
     }
-}
+};
 
-module.exports = orm
+module.exports = orm;
