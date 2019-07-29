@@ -1,3 +1,7 @@
+.done {
+    text-decoration: line-through;
+}
+
 .line-height {
     line-height: 38px;
 }

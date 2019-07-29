@@ -3,16 +3,20 @@ var orm = require('../config/orm.js');
 
 var burger = {
     selectAll: function(callback) { 
-        orm.selectAll(function(res){
+        orm.selectAll(function(res) {
             callback(res)
         });
     },
-    //insertOne: orm.insertOne(id, enjoyed),
+    insertOne: function(burgerName, enjoyed, callback) {
+        orm.insertOne(burgerName, enjoyed, function(res) {
+            callback(res)
+        });
+    }, 
     updateOne: function(id, enjoyed, callback) { 
-        orm.updateOne(id, enjoyed, function(res){
+        orm.updateOne(id, enjoyed, function(res) {
             callback(res)
         });
     }
-}
+};
 
 module.exports = burger;
