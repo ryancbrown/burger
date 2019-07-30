@@ -2,6 +2,7 @@
 var mysql = require('mysql');
 var connection; 
 
+// https://blog.edna.tech/2018/08/10/connecting-eat-da-burger-to-jawsdb-on-heroku/
 if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
